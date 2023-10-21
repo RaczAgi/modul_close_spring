@@ -1,0 +1,28 @@
+create database modul_close;
+drop database modul_close;
+use modul_close;
+drop table person;
+create table person(
+id bigint primary key auto_increment,
+name varchar(50),
+birth_place varchar(50),
+birth_date date,
+email varchar(50)
+);
+create table orders(
+	id bigint primary key auto_increment,
+    place varchar(50),
+    what varchar(50),
+    amount double,
+    person_id bigint,
+	FOREIGN KEY (person_id) REFERENCES person(id)
+);
+INSERT INTO person (name, birth_place, birth_date, email) values
+('Teszt Jani', 'Budapest', '1995-05-15', 'tesz.jani@example.com'),
+('Teszt Juli', 'Szeged', '1999-09-15', 'teszt.julih@example.com');
+
+INSERT INTO orders (place, what, amount, person_id) values
+('Teletál', 'Kirántott hús', 5000.00, 1),
+('Vegatál', 'Lencseleves', 6000.00, 2),
+('Teletál', 'Roston Csirke', 7000.00, 2),
+('Chilitál', 'Chili Dog', 4000.00, 2);

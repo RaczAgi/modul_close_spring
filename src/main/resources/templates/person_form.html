@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/home}"><h1>Home</h1></a>
+
+<form method="post" th:action="@{/person/add}">
+    <label for="name"> Name</label>
+    <input type="text" id="name" placeholder="Name" th:field="*{person.name}">
+    <label for="birthPlace">BirthPlace</label>
+    <input type="text" id="birthPlace" placeholder="birthPlace" th:field="*{person.birthPlace}">
+
+    <label for="birthDate"> BirthDate</label>
+    <input type="date" id="birthDate" placeholder="birthDate" th:field="*{person.birthDate}"  value="" min="1901-01-01" max="2023-10-05">>
+
+    <label for="email"> email</label>
+    <input type="email" id="email" placeholder="email" th:field="*{person.email}">
+
+    <button type="submit">OK</button>
+</form>
+
+</body>
+</html>

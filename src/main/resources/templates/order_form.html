@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/home}"><h1>Home</h1></a>
+<form method="post" th:action="@{'/order/add/' + ${personId}}">
+    <label for="place">Where</label>
+    <input type="text" id="place" placeholder="Place" th:field="*{order.place}">
+    <label for="what">What</label>
+    <input type="text" id="what" placeholder="What" th:field="*{order.what}">
+    <label for="amount">How much</label>
+    <input type="number" id="amount" placeholder="amount" th:field="*{order.amount}">
+    <label for="owner">Who</label>
+    <input type="number" id="owner" placeholder="Who" th:field="*{order.owner}">
+
+    <button type="submit">OK</button>
+</form>
+
+</body>
+</html>
