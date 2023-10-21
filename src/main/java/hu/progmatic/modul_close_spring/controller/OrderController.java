@@ -1,6 +1,6 @@
 package hu.progmatic.modul_close_spring.controller;
 
-import hu.progmatic.modul_close_spring.model.Orders;
+import hu.progmatic.modul_close_spring.model.Order;
 import hu.progmatic.modul_close_spring.model.Person;
 import hu.progmatic.modul_close_spring.service.OrderService;
 import hu.progmatic.modul_close_spring.service.PersonService;
@@ -28,12 +28,12 @@ public class OrderController {
     @GetMapping("/new/{person-id}")
     public String createOrder(Model model, @PathVariable("person-id") Long personId){
         model.addAttribute("personId", personId);
-        model.addAttribute("order", new Orders());
+        model.addAttribute("order", new Order());
         return "order_form";
     }
 
     @PostMapping("/add/{person-id}")
-    public String createOrder(@ModelAttribute("order") Orders order, @PathVariable("person-id") Long personId){
+    public String createOrder(@ModelAttribute("order") Order order, @PathVariable("person-id") Long personId){
         order.setOwner(personService.getPersonById(personId));
         orderService.saveOrder(order);
         return "redirect:/person";

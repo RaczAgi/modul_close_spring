@@ -1,6 +1,6 @@
 package hu.progmatic.modul_close_spring.service;
 
-import hu.progmatic.modul_close_spring.model.Orders;
+import hu.progmatic.modul_close_spring.model.Order;
 import hu.progmatic.modul_close_spring.model.Person;
 import hu.progmatic.modul_close_spring.repo.OrderRepo;
 import hu.progmatic.modul_close_spring.repo.PersonRepo;
@@ -26,7 +26,7 @@ public class PersonService {
         return personRepo.findById(id).orElse(null);
     }
 
-    public List<Orders> getAllOrdersByPerson(Person person) {
+    public List<Order> getAllOrdersByPerson(Person person) {
         return orderRepo.getOrdersByOwner(person);
     }
 
@@ -51,14 +51,14 @@ public class PersonService {
     }
 
     private void fillPersonsMapWithOrders(Map<Person, Integer> personOrders) {
-        List<Orders> orders = getAllOrders();
-        for (Orders actual : orders){
+        List<Order> orders = getAllOrders();
+        for (Order actual : orders){
             Person actualPerson = actual.getOwner();
             personOrders.put(actualPerson, personOrders.get(actualPerson) + actual.getAmount());
         }
     }
 
-    private List<Orders> getAllOrders() {
+    private List<Order> getAllOrders() {
         return orderRepo.findAll();
     }
 
